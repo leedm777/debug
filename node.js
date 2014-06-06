@@ -84,6 +84,11 @@ function log() {
  */
 
 function save(namespaces) {
+  if (namespaces === null || namespaces === undefined) {
+    // If you set a process.env field to null or undefined, it gets cast to the
+    // string 'null' or 'undefined'. Just delete instead.
+    delete process.env.DEBUG;
+  }
   process.env.DEBUG = namespaces;
 }
 
